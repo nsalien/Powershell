@@ -1,5 +1,8 @@
 ```powershell
-Install-WindowsFeature -Name AD-Domain-Services -IncludeAllSubFeature -IncludeManagementTools
+Install-WindowsFeature 
+    -Name AD-Domain-Services ` 
+    -IncludeAllSubFeature `
+    -IncludeManagementTools
 ```
 
 ```powershell
