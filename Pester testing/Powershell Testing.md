@@ -68,7 +68,7 @@ Describe "TestJSONGood" {
 
 $good = (Get-Content VMDeployBad.json) | ConvertFrom-Json | gm -MemberType NoteProperty | select -exp Name
 $bad = "CPU","DOMAINFQDN","ENVIRONMENT" , "IPADDRESS", "MEMORYGB", "VMNAME"
-$b = Compare-Object $good $bad | where -Property SideIndicator -Like '=>'
+$b = Compare-Object $good $bad | where -Property SideIndicator -Like '<='
 
 $bad = Get-Content VMDeployBad.JSON | ConvertFrom-Json
 
@@ -105,6 +105,7 @@ Describe "TestJSONBad" {
 
     
 }
+
 
 
 ```
