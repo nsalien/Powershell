@@ -24,7 +24,12 @@ GOOD:
 ```
 ```Powershell
 
+$good = (Get-Content VMDeployGood.json) | ConvertFrom-Json | gm -MemberType NoteProperty | select -exp Name
+$bad = "CPU","DOMAINFQDN","ENVIRONMENT" , "IPADDRESS", "MEMORYGB", "VMNAME"
+$a = Compare-Object $good $bad | where -Property SideIndicator -Like '=>'
+
 $good = Get-Content VMDeployGood.JSON | ConvertFrom-Json
+
 
 Describe "TestJSONGood" {
 
@@ -53,9 +58,17 @@ Describe "TestJSONGood" {
         $good.VMNAME.Contains($good.ENVIRONMENT) | should be $true
     }
 
+    It "Check property" {
+        $a | should BeNullOrEmpty
+    }
+
     
 }
 
+
+$good = (Get-Content VMDeployBad.json) | ConvertFrom-Json | gm -MemberType NoteProperty | select -exp Name
+$bad = "CPU","DOMAINFQDN","ENVIRONMENT" , "IPADDRESS", "MEMORYGB", "VMNAME"
+$b = Compare-Object $good $bad | where -Property SideIndicator -Like '=>'
 
 $bad = Get-Content VMDeployBad.JSON | ConvertFrom-Json
 
@@ -83,10 +96,15 @@ Describe "TestJSONBad" {
     }
 
     It "Check name" {
-        $bad.VMNAME.Contains($bad.ENVIRONMENT) | should be $true
+        $bad.VMNAME.Contains($bad.ENVIRONNMENT) | should be $true
+    }
+
+    It "Check" {
+        $b | Should BeNullOrEmpty
     }
 
     
 }
+
 
 ```
