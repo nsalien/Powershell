@@ -1,0 +1,55 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "newStorageAccountName": {
+      "value": "nisadevidentityaddc"
+    },
+    "storageAccountType": {
+      "value": "Standard_LRS"
+    },
+    "location": {
+      "value": "West Europe"
+    },
+    "adminUsername": {
+      "value": "Nicolai"
+    },
+    "adminPassword": {
+      "value": "Pa$$w0rd"
+    },
+    "adVMSize": {
+      "value": "Standard_D1"
+    },
+    "domainName": {
+      "value": "dev.tasmaniantraders.local"
+    },
+    "addnsName": {
+      "value": "devtasmaniantraderslocal"
+    },
+	"virtualNetworkName": {
+      "value": "VNET040"
+    },
+	"virtualNetworkAddressRange": {
+      "value": "10.40.0.0/16"
+    },
+	"adSubnetName": {
+      "value": "SUBNET000"
+    },
+	"adSubnet": {
+      "value": "10.40.0.0/24"
+    },
+	"adNicIPAddress": {
+      "value": "10.40.0.254"
+    },
+	"publicIPAddressName": {
+      "value": "dev-addc-254"
+    },
+	"adVMName": {
+      "value": "nisa-vm"
+    },
+    "assetLocation": {
+      "value": "https://raw.githubusercontent.com/xylosdevops/TasmanianTraders-IaC-ActiveDirectory/master/"
+    }
+  }
+}
+
